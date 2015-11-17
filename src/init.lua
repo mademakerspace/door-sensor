@@ -1,6 +1,9 @@
+wifiSSID='the name of your network'
+wifiPassword='the password for your network'
+
 print("Setting up WIFI...")
 wifi.setmode(wifi.STATION)
-wifi.sta.config("made-bcn.org","@MADEBCN@")
+wifi.sta.config(wifiSSID,wifiPassword)
 wifi.sta.connect()
 tmr.alarm(1, 1000, 1, function()
 if wifi.sta.getip()== nil then
