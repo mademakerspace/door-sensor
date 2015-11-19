@@ -1,4 +1,4 @@
-thingspeakAPIkey='SXKXJPI02VMMMRTS'
+thingspeakAPIkey='Your thingspeak channel write API key'
 pin = 4
 
 
@@ -36,4 +36,4 @@ conn:on("disconnection", function(conn)
   end)
 end
 
-tmr.alarm(0, 10000, 1, sendData)
+tmr.alarm(0, 120000, 1, sendData)
