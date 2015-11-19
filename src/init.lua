@@ -1,5 +1,5 @@
-wifiSSID='made-bcn.org'
-wifiPassword='@MADEBCN@'
+wifiSSID='Your Wifi network name'
+wifiPassword='Your Wifi password'
 
 print("Setting up WIFI...")
 wifi.setmode(wifi.STATION)
