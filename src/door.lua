@@ -1,7 +1,7 @@
-thingspeakAPIkey='SXKXJPI02VMMMRTS'
+thingspeakAPIkey='Your thingspeak channel write API key'
 pin = 4
-wifiSSID='made-bcn.org'
-wifiPassword='@MADEBCN@'
+wifiSSID='your wifi network name'
+wifiPassword='your wifi password'
 
 gpio.mode(pin, gpio.INPUT, gpio.PULLUP)
 currentStatus='OPEN'
