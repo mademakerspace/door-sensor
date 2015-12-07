@@ -1,10 +1,12 @@
 thingspeakAPIkey='SXKXJPI02VMMMRTS'
 pin = 4
-
+wifiSSID='made-bcn.org'
+wifiPassword='@MADEBCN@'
 
 gpio.mode(pin, gpio.INPUT, gpio.PULLUP)
 currentStatus='OPEN'
 currentValue=1
+
 
 function getStatus()
 	if gpio.read(4)==1 then
@@ -18,7 +20,7 @@ end
 
 function sendData()
 getStatus()
-print(currentValue)
+print(currentStatus)
 conn=net.createConnection(net.TCP, 0) 
 conn:on("receive", function(conn, payload)  end)
 conn:connect(80,'184.106.153.149') 
@@ -36,4 +38,15 @@ conn:on("disconnection", function(conn)
   end)
 end
 
-tmr.alarm(0, 10000, 1, sendData)
+function connectTowifi()
+	if wifi.sta.getip()== nil then
+	wifi.sta.config(wifiSSID,wifiPassword)
+	wifi.sta.connect()
+		print("IP unavaiable, Waiting...")
+	else
+		print("Currently connected: IP is "..wifi.sta.getip())
+		sendData()
+	end
+end
+
+tmr.alarm(0, 120000, 1, connectTowifi)
