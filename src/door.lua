@@ -1,20 +1,20 @@
-thingspeakAPIkey='Your thingspeak channel write API key'
-pin = 4
-wifiSSID='your wifi network name'
-wifiPassword='your wifi password'
+thingspeakAPIkey='yourThingspeakAPIwriteKey'
+wifiSSID='yourWifiSSID'
+wifiPassword='yourWifiPassword'
+gpio.mode(4,gpio.OUTPUT)
+gpio.write(4,gpio.LOW)
+gpio.mode(3,gpio.INPUT,gpio.PULLUP)
 
-gpio.mode(pin, gpio.INPUT, gpio.PULLUP)
 currentStatus='OPEN'
 currentValue=1
 
-
 function getStatus()
-	if gpio.read(4)==1 then
+	if gpio.read(3)==1 then
 		currentStatus='OPEN'
 		currentValue=1
 	else
 		currentStatus='CLOSED'
-		currentValue=0
+		currentValue=0    
    end
 end
 
@@ -49,4 +49,5 @@ function connectTowifi()
 	end
 end
 
-tmr.alarm(0, 120000, 1, connectTowifi)
+tmr.alarm(0, 30000, 1, connectTowifi)
+connectTowifi()
